@@ -45,7 +45,7 @@ func zipDockerSelfInspect(tempDir, hostname string) error {
 	}
 	defer w.Close()
 
-	w.RegisterReplacer(repl{
+	w.RegisterReplacer(replacer{
 		regex: regexp.MustCompile(`\"Image\": \"sha256:\w+"`),
 		replFunc: func(s []byte) []byte {
 			m := string(s[10 : len(s)-1])
